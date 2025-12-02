@@ -4,4 +4,4 @@ const WashingPointSchema=mongoose.Schema({
     Address:String,
     Contact_No:String
 })
-module.exports=mongoose.model('Washing_points',WashingPointSchema)
+module.exports=mongoose.model('Washing_points',WashingPointSchema)  

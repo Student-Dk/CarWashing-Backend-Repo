@@ -9,7 +9,12 @@ router.get('/',async (req,res)=>{
 })
 
 router.post('/',auth,async(req,res)=>{
+
+    try{
     const user=await washing_point_names.create(req.body)
-    res.send("Add successfully")
+    res.status(201).json({message:"Add Washing Point Successfully"})
+    }catch(err){
+        res.status(500).json({message: err.message})
+    }
 })
 module.exports=router
