@@ -8,10 +8,5 @@ router.get('/',(req,res)=>{
     res.send("This is booking api")
 })
 
-router.post('/',async(req,res)=>{
 
-    const user=await BookUser.create(req.body);
-    res.send(user)
-
-})
 module.exports=router
