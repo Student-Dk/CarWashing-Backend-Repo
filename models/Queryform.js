@@ -6,7 +6,14 @@ const UserSchema=mongoose.Schema({
     subject:String,
     message:String,
     date:{
-        type:Date,
+        type:Date, 
         default:Date.now
-    }
+    },
+    status: {
+  type: String,
+  default: 'Pending'
+}
+
 })
+
+module.exports=mongoose.model('Query',UserSchema);
