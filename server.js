@@ -47,10 +47,6 @@ app.get('/',(req,res)=>{
     res.send("you server is runnig")
 })
 
-app.post('/bookingUser',async(req,res)=>{
-    const user=await BookUser.create(req.body);
-    res.send(user)
-})
 
 app.listen(1200,()=>{
     console.log("your server is running on 1200")
