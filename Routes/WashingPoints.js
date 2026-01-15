@@ -3,6 +3,22 @@ const router = express.Router();
 const washing_point_names = require('../models/WashingPoint');
 const auth = require('../middleware/authMiddleware');
 
+
+router.get('/c', auth, async (req, res) => {
+  try {
+    const count = await washing_point_names.countDocuments(); // 👈 no condition
+
+    res.status(200).json({
+      success: true,
+      count
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message
+    });
+  }
+});
 // GET all washing points
 router.get('/', async (req, res) => {
   try {
@@ -65,5 +81,8 @@ router.put('/:id', auth, async (req, res) => {
     res.status(500).json({ error: error.message });
   }
 });
+
+
+
 
 module.exports = router;

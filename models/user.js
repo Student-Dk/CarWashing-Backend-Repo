@@ -40,7 +40,21 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     unique: true,
     required: true
-  }
+  },
+
+  date: {
+    type: Date,
+    default: Date.now
+  },
+  status: {
+    type: String,
+    default: 'new'
+  },
+
+
+  transactionType: String,
+  transactionNumber: String,
+  adminRemarks: String,
 
 }); // ✅ createdAt, updatedAt auto
 

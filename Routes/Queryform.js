@@ -9,6 +9,21 @@ router.get('/',auth, async (req,res)=>{
     res.send(query)
 })
 
+router.get('/enquiryCount', auth, async (req, res) => {
+  try {
+    const count = await queryform.countDocuments(); // 👈 no condition
+
+    res.status(200).json({
+      success: true,
+      count
+    });
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: err.message
+    });
+  }
+});
 
 
 
@@ -32,4 +47,13 @@ router.put('/:id',auth, async (req, res) => {
   res.json({ success: true });
 });
 
+router.delete('/:id', auth, async (req, res) => {
+  try {
+    const deletedPoint = await queryform.findByIdAndDelete(req.params.id);
+    if (!deletedPoint) return res.status(404).json({ message: "Data not found" });
+    res.status(200).json({ success: true, message: "Deleted successfully", data: deletedPoint });
+  } catch (error) {
+    res.status(500).json({ success: false, error: error.message });
+  }
+});
 module.exports=router
