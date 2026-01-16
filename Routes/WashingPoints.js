@@ -19,7 +19,7 @@ router.get('/c', auth, async (req, res) => {
     });
   }
 });
-// GET all washing points
+// Get all Washing point address
 router.get('/', async (req, res) => {
   try {
     const washing_points = await washing_point_names.find();
@@ -29,7 +29,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// GET by id
+// Get a specific data
 router.get('/:id', async (req, res) => {
   try {
     const data = await washing_point_names.findById(req.params.id);

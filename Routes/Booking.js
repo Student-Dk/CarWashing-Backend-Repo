@@ -15,7 +15,7 @@ router.get('/', auth, async (req, res) => {
 
 router.get('/totalCount', auth, async (req, res) => {
   try {
-    const count = await BookUser.countDocuments(); // 👈 no condition
+    const count = await BookUser.countDocuments(); 
 
     res.status(200).json({
       success: true,
@@ -102,7 +102,7 @@ router.post('/', async (req, res) => {
       try {
         user = await BookUser.create({
           ...req.body,
-          bookingId   // ✅ IMPORTANT LINE
+          bookingId   
         });
         saved = true;
 
@@ -110,7 +110,7 @@ router.post('/', async (req, res) => {
         if (err.code !== 11000) {
           throw err;
         }
-        // agar duplicate bookingId → loop continue
+       
       }
     }
 
@@ -147,7 +147,7 @@ router.post('/:id', auth, async (req, res) => {
         adminRemarks,
         status: "completed"
       },
-      { new: true } // updated data return karega
+      { new: true } 
     );
 
     if (!data) {
