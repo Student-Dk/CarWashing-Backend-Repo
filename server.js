@@ -12,7 +12,7 @@ const bcrypt=require('bcrypt');
 const BookUser=require('./models/user')
 const Admin=require("./models/Admin")
 
-mongoose.connect("mongodb://localhost:27017/CarWashing").then(()=>{
+mongoose.connect(process.env.MONGODB_URI).then(()=>{
     console.log("databac connected successfully")
 }).catch((error)=>{
     console.log("error in databse connection ",error)
