@@ -1,8 +1,9 @@
-require('dotenv').config(); 
+
 const express=require('express');
+const dotenv= require('dotenv');
 const app=express();
 const cors=require('cors')
-
+require('dotenv').config(); 
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
@@ -12,8 +13,9 @@ const bcrypt=require('bcrypt');
 const BookUser=require('./models/user')
 const Admin=require("./models/Admin")
 
+
 mongoose.connect(process.env.MONGODB_URI).then(()=>{
-    console.log("databac connected successfully")
+    console.log("database connected successfully")
 }).catch((error)=>{
     console.log("error in databse connection ",error)
 })
@@ -21,12 +23,13 @@ mongoose.connect(process.env.MONGODB_URI).then(()=>{
 
 //Routes
 const LoginRoute=require('./Routes/Login')
-const BookingRoute=require('./Routes/Booking')
+const BookingRoute=require('./Routes/Booking') 
 const Register=require('./Routes/Register')
 const Dashboard=require('./Routes/dashboard')
 const WashingPoints=require('./Routes/WashingPoints')
 const Queryform=require('./Routes/Queryform')
 const Pagedata=require('./Routes/pagedata')
+const chatbotRoutes = require("./Routes/chatbot.route");
 
 
 
@@ -38,6 +41,7 @@ app.use('/dashboard',Dashboard)
 app.use('/washingPoint', WashingPoints)
 app.use('/query',Queryform)
 app.use('/pagedata',Pagedata)
+app.use("/bot/v1/",chatbotRoutes)
 
 
 
