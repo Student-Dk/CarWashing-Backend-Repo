@@ -52,6 +52,4 @@ app.get('/',(req,res)=>{
 })
 
 
-app.listen(1200,()=>{
-    console.log("your server is running on 1200")
-})
+app.listen(process.env.PORT || 5000)
